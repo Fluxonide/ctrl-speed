@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<head>
+	<style>
+
+		body {
+			margin: 5px;
+			border: 1px solid #2899C0;
+		}
+
+		p {
+			font-size: 1.2em;
+			display: inline-block;
+		}
+
+		#header {
+			text-align: center;
+			background-color: #e6e6e6;
+			margin: 2px;
+		}
+
+		h3 {
+			color: #2899C0;
+			margin: 0;
+			padding: 15px 0px;
+		}
+
+		#content {
+			padding: 15px;
+		}
+
+		#errorMessage {
+			color: #666;
+			text-align: center;
+			font-size: 1.5em;
+			width: 250px;
+		}
+
+		#errorMessage p {
+			margin-top: 10px;
+		}
+
+		#controls {
+			width: 350px;
+			margin-bottom: 20px;
+		}
+
+		#presetLabel {
+			margin-top: 0;
+		}
+
+		#presetButtons {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 4px;
+			width: 90%;
+			margin: auto;
+		}
+
+		.preset {
+			flex: 1;
+			min-width: 60px;
+			font-size: 0.9em;
+			padding: 4px 2px;
+		}
+
+		#customLabel {
+			margin-right: 15px;
+		}
+
+		#slider {
+			border: 1px solid #2899C0;
+			background-color: #f0f0f0;
+			padding: 0;
+			height: 10px;
+			width: 90%;
+			margin: auto;
+			border-radius: 10px;
+			user-drag: none;
+			user-select: none;
+		}
+
+		#slider * {
+			user-drag: none;
+			user-select: none;
+		}
+
+		.sliderFill {
+			position: relative;
+			top: 0.5px;
+			height: 11px;
+			border-radius: 10px;
+			width: 0%;
+			top: -1px;
+			background-color: white;
+			margin: 0;
+			transition: background-color 0.5s ease;
+		}
+
+		.red {
+			background-color: #f22;
+		}
+
+		.green {
+			background-color: #4d4;
+		}
+
+		.cyan {
+			background-color: #5cf;
+		}
+
+		.darkRed {
+			background-color: #800;
+		}
+
+		.sliderHandle {
+			transform: translate(-50%, -75%);
+			position: relative;
+			background-color: white;
+			width: 20px;
+			height: 20px;
+			border: 2px solid #2899C0;
+			box-sizing: border-box;
+			border-radius: 50%;
+			margin: 0;
+			top: -1px;
+			transition: border-width 0.25s;
+			transition: border-color 0.25s;
+		}
+
+		.sliderHandle:hover {
+			border-width: 4px;
+		}
+
+		#sliderLabel {
+			position: relative;
+			top: 20px;
+			text-align: center;
+			vertical-align: middle;
+			box-sizing: border-box;
+		}
+
+		.interacting {
+			border-color: #ffaa00;
+		}
+
+	</style>
+</head>
+<body>
+	<div id='header'>
+		<h3>Audio/Video Playback Controller</h3>
+	</div>
+	<div id='content'>
+		<div id='errorMessage'>
+			<p>No audio or video found on this page.</p>
+		</div>
+
+		<div id='controls' hidden>
+			<p id="presetLabel">Preset Speeds:</p>
+			<div id='presetButtons'>
+				<button class='preset' data-speed='0.25'>0.25x</button>
+				<button class='preset' data-speed='0.5' >0.5x</button>
+				<button class='preset' data-speed='0.75'>0.75x</button>
+				<button class='preset' data-speed='1.0' >1.0x</button>
+				<button class='preset' data-speed='1.25'>1.25x</button>
+				<button class='preset' data-speed='1.5' >1.5x</button>
+				<button class='preset' data-speed='1.75'>1.75x</button>
+				<button class='preset' data-speed='2'   >2.0x</button>
+				<button class='preset' data-speed='2.5' >2.5x</button>
+				<button class='preset' data-speed='3'   >3.0x</button>
+			</div>
+			<p id='customLabel'>Custom Speed:</p><button id='decrement'>-</button><button id='increment'>+</button>
+			<div id='slider'>
+				<div class='sliderInner'><div class='sliderFill green'></div></div>
+				<div class='sliderHandle'>
+					<span id='sliderLabel'>1.00x</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+<script type='text/javascript' src='popup.js'></script>
+</html>
